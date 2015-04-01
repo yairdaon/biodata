@@ -23,23 +23,32 @@ with con:
     cur.execute("CREATE TABLE Cars(Id INT, Name TEXT, Price INT)")
     cur.executemany("INSERT INTO Cars VALUES(?, ?, ?)", cars)
     cur = con.cursor()    
-    cur.execute("SELECT * FROM Cars")
+    cur.execute("SELECT * FROM Cars WHERE Id=3")
 
     rows = cur.fetchall()
     
     for row in rows:
         print row
 
-
+# Real stuff
 con = lite.connect('proteindata.sqlite')
 with con:
     
     cur = con.cursor()    
     
-    cur.executemany("INSERT INTO Cars VALUES(?, ?, ?)", cars)
     cur = con.cursor()    
+    cur.execute("DROP TABLE IF EXISTS Cars")
     cur.execute("SELECT * FROM protein")
     
     rows = cur.fetchall()
 
+    
     print "Database has " + str(len(rows)) + " rows"
+    
+    cur.execute("SELECT * FROM protein WHERE ID=4")
+    names = cur.fetchone()
+
+    
+    for x in names:
+        print x
+        print
