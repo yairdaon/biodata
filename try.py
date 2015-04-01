@@ -29,3 +29,17 @@ with con:
     
     for row in rows:
         print row
+
+
+con = lite.connect('proteindata.sqlite')
+with con:
+    
+    cur = con.cursor()    
+    
+    cur.executemany("INSERT INTO Cars VALUES(?, ?, ?)", cars)
+    cur = con.cursor()    
+    cur.execute("SELECT * FROM protein")
+    
+    rows = cur.fetchall()
+
+    print "Database has " + str(len(rows)) + " rows"
