@@ -24,7 +24,7 @@ def DATAFRAMER_Prot(fil,patt,pat1):
         vv= vv[np.isfinite(vv[pat1])]
     return vv
 
-np.asarray(vv)  ## for Further processing..
+np.asarray(vv)  ## for Further processing..can be added to the above function
 
 
 ##NEXT STEPS##
