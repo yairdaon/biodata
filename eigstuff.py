@@ -1,6 +1,10 @@
 
+import numpy as np
+import dataframefunction as dff
+
 # get the data
-vv = DATAFRAMEFUNCTION(... . ...)
+vv = dff.DATAFRAMER_Prot('no_NA_proteindata.csv',
+			'LFQ.intensity.','LFQ.intensity.1_0h_RS1')
 
 #make an array
 data = np.asarray(vv)
@@ -18,12 +22,3 @@ avg = (sam1+sam2)/2.0
 U , S, V = np.linalg.svd(avg)
 
 
-
-
-###
-most_sig_eig_gene = U[:,0]
-
-most_sig_eig_gene
-Out[42]:
-array([-0.00021219, -0.00034019, -0.0005811 , ..., -0.00074133,
-       -0.00041571, -0.0005057 ])
