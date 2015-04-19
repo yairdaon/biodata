@@ -16,12 +16,20 @@ warnings.filterwarnings('ignore', 'numpy equal will not check object identity in
 
 ##Run Example = DATAFRAMER_Prot('no_NA_proteindata.csv','LFQ.intensity.','LFQ.intensity.1_0h_RS1')
 ##This runs the Label Free Quantified expression 
-def DATAFRAMER_Prot(fil):
+def DATAFRAMER_Prot(fil,patt,pat1):
     with open(fil)as f: ##open the file which is a csv
-        df1 = pd.read_csv(f) ##use_gene_ids as rownames / NA exception for missing genes*2
-        dd= df1[(df1.Contaminant!='+') & (df1.Reverse!='+')] ##filter out '+' in Reverse/Contaiminant columns 
-       return vv
+        df1 = pd.read_csv(f,index_col='Gene.names',na_values=['NA']) ##use_gene_ids as rownames
+        dd= df1[(df1.Contaminant!='+') &(df1.Reverse!='+')] ##filter out '+' in Reverse/Contaiminant columns
+        vv= pd.DataFrame(dd.filter(regex=patt))
+        vv= vv[np.isfinite(vv[pat1])]
+        #add if clause
+        #del vv[pat1]
+    return vv
 
+#def DATAFRAMER_Prot(fil,patt,pat1):
+   # with open(fil)as f: ##open the file which is a csv
+       # df1 = pd.read_csv(f) ##use_gene_ids as rownames / NA exception for missing genes*2
+       #dd= df1[(df1.C
 
 
 ##NEXT STEPS##

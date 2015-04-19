@@ -10,10 +10,10 @@ vv = dff.DATAFRAMER_Prot('no_NA_proteindata.csv',
 data = np.asarray(vv)
 
 # get the first experiment
-sam1 = data[:,0:-1:2]
+sam1 = data[:,0:len(data[1,:]):2]
 
 # get the second experiment
-sam2 = data[:,1:-1:2]
+sam2 = data[:,1:len(data[1,:]):2]
 
 # average first ands second experiments
 avg = (sam1+sam2)/2.0
