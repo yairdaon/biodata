@@ -59,7 +59,6 @@ docs/_build/
 target/
 
 Papers
-*.csv
 *.db
 *.sqlite
 *.pdf
