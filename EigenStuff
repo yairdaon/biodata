@@ -1,0 +1,17 @@
+## slice every other row
+c=b[:,0:-1:2]
+
+U , S, V = np.linalg.svd(avg)
+
+shape.U
+
+U.shape
+(2092, 2092)
+
+###
+most_sig_eig_gene = U[:,0]
+
+most_sig_eig_gene
+Out[42]:
+array([-0.00021219, -0.00034019, -0.0005811 , ..., -0.00074133,
+       -0.00041571, -0.0005057 ])
