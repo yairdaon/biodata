@@ -63,3 +63,6 @@ Papers
 *.sqlite
 *.pdf
 pdf/*.*
+
+# images
+*.png
