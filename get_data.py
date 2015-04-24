@@ -1,15 +1,16 @@
 import numpy as np
 
-def get_np_arrays():  
+# creates fake data!!!!
+def get_fake_arrays(nsets):  
     
     # creates FAKE DATA!!!
     # this needs a script to get the real data
 
-    # the number of timesteps - we have 8:  0,15,30,60,90,120 (???)
+    # the number of timesteps - we have 8
     n = 8
 
-    # assume we have three data sets
-    datasize = 3
+    # how many data sets ("experiments") we got
+    datasize = nsets
     
     # create fake data
     data =[]
@@ -23,3 +24,6 @@ def get_np_arrays():
            
     # return list with data mtrices
     return data
+
+def get_good_arrays():
+    print "Do something here!!!"

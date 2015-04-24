@@ -61,7 +61,15 @@ def hogsvd(data):
 
     # extract eigenvalues, like the end of equation (2) in the paper
     w , V = np.linalg.eig(S)
+    w = np.array(w)
+    
+    # sanity checks:
+    assert len(w) == n , "Error. We have too many eigenvalues for S."
+    assert V.shape[1] == n
+    assert V.shape[0] == n
+    assert np.greater( w ,1 ).all , "Eigenvalues of w smaller than 1!"
 
+    
     # find the U's - corresponds to equations (3) and (4) in the paper
     U = []
     Sigma =[]
@@ -70,14 +78,13 @@ def hogsvd(data):
         b = np.transpose( b ) 
         sigma = np.sqrt ( np.sum( b*b, 0 ) ) # sigma is a vector with entries as in (4)
         u = b/sigma
+        
+        assert u.shape[0] == D.shape[0]
+        assert u.shape[1] == D.shape[1]
         Sigma.append( sigma )
         U.append( u )
 
-
-    # sanity checks:
-    assert len(w) == n , "Error. We have too many eigenvalues for S."
-    assert np.all( np.where( w >= 1 ) ) , "Eigenvalues of w smaller than 1!"
-
+    assert len(U) == len(Sigma) , "Dimension mismatch"
     return U , Sigma , V , w
 
 
@@ -94,7 +101,10 @@ if (__name__ == '__main__'):
         data.append ( d )
         
     # get the hogsvd 
-    U , S , V = hogsvd(data)
+    U , S , V , w = hogsvd(data)
+    
+    assert len(U) == len(S)
+    assert V.shape[0] == n
 
     for i in range(len(data)):
 
@@ -111,5 +121,5 @@ if (__name__ == '__main__'):
 
         # make sure it is close to the original one
         assert np.allclose(reconstructed , data[i] ) , "Failed for " + str(i) +"th dataset."
-
+        
     print "Test complete."
