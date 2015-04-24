@@ -14,10 +14,10 @@ n= len(data[0,:])/2
 print n
 
 # get the first experiment
-sam1 = data[:,0:n:2]
+sam1 = data[:,0:2*n:2]
 
 # get the second experiment
-sam2 = data[:,1:n:2]
+sam2 = data[:,1:2*n:2]
 
 # average first ands second experiments
 avg = (sam1+sam2)/2.0
