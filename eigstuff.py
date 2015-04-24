@@ -36,5 +36,4 @@ for i in range(n):
 
 times = [0, .5,1,2,8,16,24,30]
 
-plt.plot(times, vals)
-plt.show()
+
