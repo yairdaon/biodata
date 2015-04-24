@@ -8,3 +8,6 @@ get:
 
 push:
 	git push https://github.com/yairdaon/biodata.git
+
+clean:
+	rm -rvf *.png *~ *.pyc
