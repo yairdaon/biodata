@@ -10,12 +10,9 @@ np.random.seed(17) # 17 is the most random number of all!!
 # plot stuff, not interesting
 colors = [ 'r' , 'b' , 'g' ,'c', 'm', 'y', 'k']
 
-# set up steps:
-nSets    = 3 # assume we have three data sets
-
 # get the data as a list of numpy arrays
-data = get_data.get_fake_arrays(nSets) # now we use FAKE data
-
+data = get_data.get_fake_arrays(3) # now we use FAKE data
+nSets = len(data) # number of data sets
 
 # perform hogsvd
 U , sigma ,V , w = hog.hogsvd(data)
