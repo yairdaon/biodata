@@ -1,4 +1,6 @@
 import numpy as np
+import dataframefunction as dff
+import readdata as rd
 
 # creates fake data!!!!
 def get_fake_arrays(nsets):  
@@ -26,4 +28,32 @@ def get_fake_arrays(nsets):
     return data
 
 def get_good_arrays():
-    print "Do something here!!!"
+   
+
+    data =[]
+    rna = rd.readcsv('RNA_normalized_filtered_LOWESSsmoothed.txt')
+    data.append(rna)
+    
+    
+
+    # get the data
+    vv = dff.DATAFRAMER_Prot('no_NA_proteindata.csv',
+			'LFQ.intensity.','LFQ.intensity.1_0h_RS1')
+    
+    #make an array
+    data = np.asarray(vv)
+    n= len(data[0,:])/2
+    
+
+    # get the first experiment
+    sam1 = data[:,0:2*n:2]
+
+    # get the second experiment
+    sam2 = data[:,1:2*n:2]
+
+    # average first ands second experiments
+    avg = (sam1+sam2)/2.0
+
+    print rna.shape
+    print avg.shape
+    data.append(avg)

@@ -4,7 +4,6 @@ __pycache__/
 *~
 
 # data files
-*.txt
 *.zip
 
 # C extensions

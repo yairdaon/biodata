@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 import get_data
 import hogsvd as hog
+import dataframefunction as dff
 
 # for reproducibility, set the random number generator's seed
 np.random.seed(17) # 17 is the most random number of all!!
@@ -11,7 +12,8 @@ np.random.seed(17) # 17 is the most random number of all!!
 colors = [ 'r' , 'b' , 'g' ,'c', 'm', 'y', 'k']
 
 # get the data as a list of numpy arrays
-data = get_data.get_fake_arrays(3) # now we use FAKE data
+#data = get_data.get_fake_arrays(3) # now we use FAKE data
+data  = get_data.get_good_arrays()
 nSets = len(data) # number of data sets
 
 # perform hogsvd

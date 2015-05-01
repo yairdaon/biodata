@@ -14,7 +14,15 @@ def readcsv(filename):
                               quotechar = '"')
        data = [data for data in data_iter]  
    readers = numpy.asarray(data)  
-   return readers
+   rnas , times = readers.shape
+   
+   readers = readers[1:rnas,1:times]
+   
+   rna1  = readers[:,0:times/2]
+   rna3  = readers[:,times/2:times-1]
+
+   
+   return (rna1 +  rna3)/2.0
 
 if __name__=="__main__":
    parser=optparse.OptionParser()
