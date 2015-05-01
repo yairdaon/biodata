@@ -29,7 +29,7 @@ def hogsvd(data):
             print "number of columns = " +str(n)
             print "ith dataset " + str(i)
             
-        #assert r >= n , "The dataset does not have full column rank"
+        assert r >= n , "This dataset does not have full column rank"
 
         # increment counter, so we know which entry we are using
         i = i+1

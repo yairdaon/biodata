@@ -28,37 +28,21 @@ def get_fake_arrays(nsets):
     # return list with data mtrices
     return data
 
+
+# get actual (real, experimental!!!) data
 def get_good_arrays():
    
-
-    rt =[]
+    # an empty list of numpy arrays
+    data_list=[]
      
-    
-
-    # get the data
-    vv = dff.DATAFRAMER_Prot('no_NA_proteindata.csv',
+    # get protein data
+    prot = dff.DATAFRAMER_Prot('no_NA_proteindata.csv',
 			'LFQ.intensity.','LFQ.intensity.1_0h_RS1')
-    
-    #make an array
-    data = np.asarray(vv)
-    n= len(data[0,:])/2
-    
-    # get the first experiment
-    sam1 = data[:,0:2*n:2]
 
-    # get the second experiment
-    sam2 = data[:,1:2*n:2]
-
-    # average first ands second experiments
-    avg = (sam1+sam2)/2.0
-
-
+    # get RNA data
     rna = rd.read_RNA('RNA_normalized_filtered_LOWESSsmoothed.txt')
 
-    rt.append(avg)
-    rt.append(rna)
+    data_list.append(prot)
+    data_list.append(rna)
 
-    print avg.shape
-    print rna.shape
-
-    return rt
+    return data_list

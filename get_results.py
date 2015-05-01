@@ -12,18 +12,19 @@ np.random.seed(17) # 17 is the most random number of all!!
 colors = [ 'r' , 'b' , 'g' ,'c', 'm', 'y', 'k']
 
 # get the data as a list of numpy arrays
-#data = get_data.get_fake_arrays(3) # now we use FAKE data
-data  = get_data.get_good_arrays()
+#data = get_data.get_fake_arrays(3) #  use FAKE data
+data  = get_data.get_good_arrays()  # use REAL data
 nSets = len(data) # number of data sets
 
 # perform hogsvd
 U , sigma ,V , w = hog.hogsvd(data)
 
 # get indices of eigenvalues with equal significance
-goodIndices = np.ravel( np.where( w < 1.5 ) )
+goodIndices = np.ravel( np.where( w < 2.0 ) )
+print w
 
 # time steps we use for experiments
-times = np.array([0,0.5, 1 , 2 ,8,  16 ,24 ,30 ] ) 
+times = np.array([0 ,0.5, 1, 2, 8,16 ,24 ,30 ] ) 
 
 
 # here we gather expression levels of  the first higer order eigen genes
