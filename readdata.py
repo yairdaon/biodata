@@ -1,4 +1,6 @@
 import csv
+import numpy
+import pandas
 import optparse
 
 
@@ -6,10 +8,13 @@ def readcsv(filename):
    """
    read the csv file to get the information of patients
    """
-   f=open(filename,"r")
-   readers=csv.DictReader(f)
-   headers=readers.fieldnames
-   return headers,readers
+   with open(filename,'r') as dest_f:
+       data_iter = csv.reader(dest_f, 
+                              delimiter ="\t", 
+                              quotechar = '"')
+       data = [data for data in data_iter]  
+   readers = numpy.asarray(data)  
+   return readers
 
 if __name__=="__main__":
    parser=optparse.OptionParser()
@@ -20,5 +25,6 @@ if __name__=="__main__":
    (options,args)=parser.parse_args()   
    CSVfile=options.CSVfile
    
-   headers,readers=readcsv(CSVfile)
+   readers=readcsv(CSVfile)
+   print (1)
    
