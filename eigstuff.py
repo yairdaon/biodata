@@ -36,4 +36,7 @@ for i in range(n):
 
 times = [0, .5,1,2,8,16,24,30]
 
+genes= list(vv.index.values)
+
+print(genes[:100])
 
