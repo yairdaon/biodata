@@ -76,15 +76,14 @@ def get_good_arrays():
     # an empty list for names
     name_list = []
 
-    # get protein data
-    prot = dff.DATAFRAMER_Prot('no_NA_proteindata.csv',
+    # get protein data and protein names
+    prot ,prot_names = dff.DATAFRAMER_Prot('no_NA_proteindata.csv',
 			'LFQ.intensity.','LFQ.intensity.1_0h_RS1')
-
-    prot_names  = prot.index
 
     # get RNA data and names
     rna ,rna_names = rd.read_RNA('RNA_normalized_filtered_LOWESSsmoothed.txt')
     
+    # normalize 
     prot = divide_by_row_max( prot )
     rna  = divide_by_row_max( rna  )
     

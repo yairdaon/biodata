@@ -26,9 +26,13 @@ def DATAFRAMER_Prot(fil,patt,pat1):
         #del vv[pat1]
 
 
+    
     #make an array
     data_array = np.asarray(vv)
     
+    # get the names
+    names = vv.index
+
     # get number of columns
     _ , n = data_array.shape
     
@@ -41,7 +45,7 @@ def DATAFRAMER_Prot(fil,patt,pat1):
     # average first ands second experiments
     average = (experiment1 + experiment2)/2.0
 
-    return average
+    return average , names
 
 #def DATAFRAMER_Prot(fil,patt,pat1):
    # with open(fil)as f: ##open the file which is a csv
