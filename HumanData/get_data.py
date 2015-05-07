@@ -71,15 +71,19 @@ def get_fake_arrays(nsets, n=8):
 def get_good_arrays():
    
     # an empty list of numpy arrays
-    data_list=[]
+    data_list = []
      
+    # an empty list for names
+    name_list = []
+
     # get protein data
     prot = dff.DATAFRAMER_Prot('no_NA_proteindata.csv',
 			'LFQ.intensity.','LFQ.intensity.1_0h_RS1')
 
-    # get RNA data
-    rna = rd.read_RNA('RNA_normalized_filtered_LOWESSsmoothed.txt')
+    prot_names  = prot.index
 
+    # get RNA data and names
+    rna ,rna_names = rd.read_RNA('RNA_normalized_filtered_LOWESSsmoothed.txt')
     
     prot = divide_by_row_max( prot )
     rna  = divide_by_row_max( rna  )
@@ -87,4 +91,7 @@ def get_good_arrays():
     data_list.append(prot)
     data_list.append(rna)
 
-    return data_list
+    name_list.append(prot_names)
+    name_list.append(rna_names )
+
+    return data_list , name_list
