@@ -11,8 +11,11 @@ np.random.seed(17) # 17 is the most random number of all!!
 # plot stuff, not interesting
 colors = [ 'r' , 'b' , 'g' ,'c', 'm', 'y', 'k']
 
+# experiment names
+xp     = ['protein data' , 'RNA data']
+
 # get the data as a list of numpy arrays
-#data = get_data.get_fake_arrays(3) #  use FAKE data
+#data = get_data.get_fake_arrays(2) #  use FAKE data
 data  = get_data.get_good_arrays()  # use REAL data
 nSets = len(data) # number of data sets
 
@@ -56,11 +59,12 @@ for i in goodIndices:
         
  
         curve =  plt.plot(times, expression, 
-                          label = str(i)+ "th eigengene in "+ str(j) + "th experiment." )
+                          label = str(i)+ "th eigengene in "+ xp[j] )
         plt.setp( curve, 'linewidth', 3.0, 'color', colors[j] , 'alpha', .5 )
 
     plt.legend(loc = 1 , prop ={'size':7})
-    plt.title("expression of " + str(i) + "th eigengen across experiments")
+    tit_str  = "Expression of "+str(i)+"th eigengen. Eigenvalue = " + str(w[i])
+    plt.title(tit_str)
     plt.savefig("Expression of " + str(i) + "th eigengene")
     plt.close()
 

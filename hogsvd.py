@@ -24,12 +24,9 @@ def hogsvd(data):
         # do the data matrices have full rank?
         r = np.linalg.matrix_rank(d)
 
-        if ( r < n ):
-            print "rank = " +str(r)
-            print "number of columns = " +str(n)
-            print "ith dataset " + str(i)
-            
-        assert r >= n , "This dataset does not have full column rank"
+        
+        errStr = str(i) +"th dataset. Rank = "+str(r)+". Has "+str(n) +" columns. Rank deficient."
+        assert r >= n , errStr
 
         # increment counter, so we know which entry we are using
         i = i+1
