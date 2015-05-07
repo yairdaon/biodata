@@ -16,7 +16,7 @@ xp     = ['protein data' , 'RNA data']
 
 # get the data as a list of numpy arrays
 #data = get_data.get_fake_arrays(2) #  use FAKE data
-data  = get_data.get_good_arrays()  # use REAL data
+data , names  = get_data.get_good_arrays()  # use REAL data
 nSets = len(data) # number of data sets
 
 # perform hogsvd
@@ -68,3 +68,4 @@ for i in goodIndices:
     plt.savefig("Expression of " + str(i) + "th eigengene")
     plt.close()
 
+    expression_with_names = dict(zip(names[j], eigenGene))

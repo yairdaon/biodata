@@ -7,6 +7,9 @@ def read_RNA(fil):
    # load data into pndas dataframe
    df = pd.read_csv(fil , sep=None)
 
+   # get rna names
+   names = df.index
+   
    # get data as stupidly as possible
    t0  = df.R1t0  + df.R3t0   # t == 0  hours 
    t05 = df.R1t05 + df.R3t05  # t == 0.5 hours
@@ -27,7 +30,7 @@ def read_RNA(fil):
    # transpose so times are columns
    rna = np.transpose( rna )
        
-   return rna
+   return rna ,names
 
 if __name__=="__main__":
    read_RNA('RNA_normalized_filtered_LOWESSsmoothed.txt')
