@@ -86,7 +86,7 @@ for i in goodIndices:
     plt.close()
 
     # save data in pickle
-    save_str = "Data of " +str(i) +"th eigengene"
+    save_str = "eigen" +str(i)
     output = open(save_str, 'ab+')
     pickle.dump(list_of_dictionaries, output)
     output.close()
