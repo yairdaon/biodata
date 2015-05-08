@@ -1,6 +1,7 @@
 import numpy as np
 import dataframefunction as dff
 import readdata as rd
+import NewRNA as nu
 import pandas as pd
 
 def subtract_row_mean(arr):  
@@ -81,7 +82,7 @@ def get_good_arrays():
 			'LFQ.intensity.','LFQ.intensity.1_0h_RS1')
 
     # get RNA data and names
-    rna ,rna_names = rd.read_RNA('RNA_normalized_filtered_LOWESSsmoothed.txt')
+    rna ,rna_names = nu.read_RNA('RNA_normalized_filtered_LOWESSsmoothed.txt')
     
     # normalize 
     prot = divide_by_row_max( prot )
