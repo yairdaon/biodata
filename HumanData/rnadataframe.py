@@ -11,3 +11,7 @@ t8 = (vv.R1t8 + vv.R3t8)/2.0
 t16 = (vv.R1t16 + vv.R3t16)/2.0
 t24 = (vv.R1t24 + vv.R3t24)/2.0
 t30 = (vv.R1t30 + vv.R3t30)/2.0
+
+RNA2=pd.read_table('HeLa_RNA_normalized_filtered.txt',index_col=0)
+
+return RNA2
